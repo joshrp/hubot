@@ -1,4 +1,4 @@
-åhttps = require 'https'
+https = require 'https'
 fs = require 'fs'
 
 defaultOptions =
@@ -31,8 +31,8 @@ getIssue = (ticket, msg) ->
 
 module.exports = (robot) ->
 
-    robot.hear /(^|\s)([0-9]{4,5})/i, (msg) ->
-        getIssue('IPLAYER-' + msg.match[2], msg)
+    robot.hear /(?:\s|^)([0-9]{4,5})/i, (msg) ->
+        getIssue('IPLAYER-' + msg.match[1], msg)
 
     robot.hear /\b([a-z]+-[0-9]+)\b/i, (msg) ->
         getIssue(msg.match[1], msg)
