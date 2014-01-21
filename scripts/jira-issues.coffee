@@ -34,5 +34,5 @@ module.exports = (robot) ->
     robot.hear /(?:\s|^)([0-9]{4,5})/i, (msg) ->
         getIssue('IPLAYER-' + msg.match[1], msg)
 
-    robot.hear /\b([a-z]+-[0-9]+)\b/i, (msg) ->
-        getIssue(msg.match[1], msg)
+    robot.hear /(\s|^)([a-z]+-[0-9]+)(\s|$)/i, (msg) ->
+        getIssue(msg.match[2], msg)
