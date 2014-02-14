@@ -14,4 +14,4 @@ module.exports = (robot) ->
                 nicks.push(user.name)
 
         nicks = nicks.join(', ')
-        msg.send "#{nicks}"
+        # msg.send "Everyone, #{sender.name} is desperate for attention."
