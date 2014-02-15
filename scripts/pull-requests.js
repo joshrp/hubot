@@ -38,8 +38,7 @@ module.exports = function (robot) {
         var query = querystring.parse(url.parse(req.url).query);
         var data = req.body;
         var room = query.room;
-        var payload = JSON.parse(data.payload);
-        var response = processPayload(payload, robot);
+        var response = processPayload(data, robot);
 
         robot.send({user: {name: 'broadcast', room: room}}, response);
         res.end("github pinged me");
