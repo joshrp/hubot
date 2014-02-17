@@ -14,7 +14,7 @@ var url = require('url'),
         }
         return owner + ', "' + payload.pull_request.title + '" has just been merged by ' + sender;
     },
-    pullRequestOpen = function (payload, robot) {
+    pullRequestOpened = function (payload, robot) {
         var gh_users = robot.brain.get('gh_users') || {},
             owner = gh_users[payload.pull_request.user.login] || payload.pull_request.user.login;
         return owner + ' has just submitted a new pull request, "' + payload.pull_request.title + '" - ' + payload.pull_request.html_url;
