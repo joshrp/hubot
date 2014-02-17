@@ -1,3 +1,10 @@
+// Description:
+//   Commands to alert people in the room
+// Commands:
+//   hubot add (.+) to (developers|testers) - Add a user in the room to the developers or testers group
+//   hubot remove (.+) from (developers|testers) - Remove a user from the developers of testers group
+//   ^(developers|testers) - Alert people in the developers or testers group
+//   ^(any|every)(one|body) - Alert people in all groups
 module.exports = function(robot) {
     var alerts = [
         "Yo",
