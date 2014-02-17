@@ -11,7 +11,7 @@ module.exports = function(robot) {
         "Listen up",
         "Pay attention"
     ];
-    robot.respond(/add (.+) to (developers|testers)/i, function (msg) {
+    robot.respond(/add (.+) to (developers|testers|kombats|pandas)/i, function (msg) {
         var nick = msg.match[1],
             type = msg.match[2],
             users = robot.brain.get(type);
@@ -26,7 +26,7 @@ module.exports = function(robot) {
             msg.send("But " + nick + " is already in " + type);
         }
     });
-    robot.respond(/remove (.+) from (developers|testers)/i, function (msg) {
+    robot.respond(/remove (.+) from (developers|testers|kombats|pandas)/i, function (msg) {
         var nick = msg.match[1],
             type = msg.match[2],
             users = robot.brain.get(type),
@@ -44,7 +44,7 @@ module.exports = function(robot) {
             msg.send("Okay! I've removed " + nick + " from " + type);
         }
     });
-    robot.hear(/^(developers|testers)/i, function (msg) {
+    robot.hear(/^(developers|testers|kombats|pandas)/i, function (msg) {
         var type = msg.match[1],
             users = robot.brain.get(type),
             alert;
@@ -60,6 +60,8 @@ module.exports = function(robot) {
     robot.hear(/^(any|every)(one|body)/i, function (msg) {
         var developers = robot.brain.get('developers'),
             testers = robot.brain.get('testers'),
+            testers = robot.brain.get('kombats'),
+            testers = robot.brain.get('pandas'),
             users = developers.concat(testers),
             alert = msg.random(alerts);
 
