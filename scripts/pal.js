@@ -11,4 +11,7 @@ module.exports = function(robot) {
 
         msg.send('Here you go ' + log);
     });
+    robot.hear(/canada/i, function (msg) {
+        msg.send('Eh?');
+    });
 }
