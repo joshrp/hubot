@@ -5,6 +5,7 @@
 //   hubot remove (.+) from (developers|testers) - Remove a user from the developers of testers group
 //   ^(developers|testers) - Alert people in the developers or testers group
 //   ^(any|every)(one|body) - Alert people in all groups
+var _ = require('underscore');
 module.exports = function(robot) {
     var alerts = [
         "Yo",
@@ -60,11 +61,12 @@ module.exports = function(robot) {
     robot.hear(/^(any|every)(one|body)/i, function (msg) {
         var developers = robot.brain.get('developers'),
             testers = robot.brain.get('testers'),
-            testers = robot.brain.get('kombats'),
-            testers = robot.brain.get('pandas'),
-            users = developers.concat(testers),
+            kombats = robot.brain.get('kombats'),
+            pandas = robot.brain.get('pandas'),
+            users = _.uniq(developers.concat(testers, kombats, pandas)),
             alert = msg.random(alerts);
 
         msg.send(alert + "! " + users.join(', '));
     });
 }
+
